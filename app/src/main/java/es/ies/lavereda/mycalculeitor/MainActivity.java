@@ -87,6 +87,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         botonResta.setOnClickListener(this);
         botonMultipl.setOnClickListener(this);
         botonClear.setOnClickListener(this);
+
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b)
+                    radioGroup.setVisibility(View.VISIBLE);
+                else
+                    radioGroup.setVisibility(View.GONE);
+            }
+        });
+
     }
 
     @Override
@@ -122,6 +133,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else
                     display.setText(display.getText()+b.getTag().toString());
 
+            }
+        }
+
+        if(view instanceof RadioButton) {
+            RadioButton rd = (RadioButton) view;
+            if (rd == radioSuma) {
+                botonSuma.setEnabled(false);
+                botonResta.setEnabled(true);
+                botonMultipl.setEnabled(true);
+                botonDividir.setEnabled(true);
+            }
+            if (rd == radioSuma) {
+                botonSuma.setEnabled(true);
+                botonResta.setEnabled(false);
+                botonMultipl.setEnabled(true);
+                botonDividir.setEnabled(true);
+            }
+            if (rd == radioSuma) {
+                botonSuma.setEnabled(false);
+                botonResta.setEnabled(true);
+                botonMultipl.setEnabled(false);
+                botonDividir.setEnabled(true);
+            }
+            if (rd == radioSuma) {
+                botonSuma.setEnabled(true);
+                botonResta.setEnabled(true);
+                botonMultipl.setEnabled(true);
+                botonDividir.setEnabled(false);
             }
         }
     }
