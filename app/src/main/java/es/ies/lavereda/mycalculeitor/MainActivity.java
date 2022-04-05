@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RadioButton radioMultipli;
     private RadioButton radioDividir;
     private int aux;
+    private int aux2;
     private int resultado;
 
 
@@ -111,19 +112,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }else if (b==botonSuma){
                 aux=Integer.parseInt(display.getText().toString());
                 display.setText("0");
-                resultado=aux + Integer.parseInt(display.getText().toString());
+                if (aux!=0)
+                    aux+=aux;
             }else if (b==botonResta){
                 aux=Integer.parseInt(display.getText().toString());
-                display.setText("0");
                 resultado=aux-Integer.parseInt(display.getText().toString());
+                display.setText(resultado);
             }else if (b==botonMultipl){
                 aux=Integer.parseInt(display.getText().toString());
-                display.setText("0");
                 resultado=aux*Integer.parseInt(display.getText().toString());
+                display.setText(resultado);
             }else if (b==botonDividir){
                 aux=Integer.parseInt(display.getText().toString());
-                display.setText("0");
                 resultado=aux/Integer.parseInt(display.getText().toString());
+                display.setText(resultado);
             }else if (b==botonClear) {
                 display.setText("0");
                 aux = 0;
@@ -144,19 +146,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 botonMultipl.setEnabled(true);
                 botonDividir.setEnabled(true);
             }
-            if (rd == radioSuma) {
+            if (rd == radioResta) {
                 botonSuma.setEnabled(true);
                 botonResta.setEnabled(false);
                 botonMultipl.setEnabled(true);
                 botonDividir.setEnabled(true);
             }
-            if (rd == radioSuma) {
-                botonSuma.setEnabled(false);
+            if (rd == radioMultipli) {
+                botonSuma.setEnabled(true);
                 botonResta.setEnabled(true);
                 botonMultipl.setEnabled(false);
                 botonDividir.setEnabled(true);
             }
-            if (rd == radioSuma) {
+            if (rd == radioDividir) {
                 botonSuma.setEnabled(true);
                 botonResta.setEnabled(true);
                 botonMultipl.setEnabled(true);
