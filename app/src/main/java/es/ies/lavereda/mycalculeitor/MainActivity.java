@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button botonIgual;
     private Button botonClear;
     private TextView display;
+    private TextView display2;
     private CheckBox checkBox;
     private RadioGroup radioGroup;
     private RadioButton radioSuma;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         botonDividir=findViewById(R.id.dividirButon);
         botonClear=findViewById(R.id.clearButton);
         display=findViewById(R.id.textView);
+        display2=findViewById(R.id.display2);
         checkBox=findViewById(R.id.checkBox);
         radioGroup=findViewById(R.id.radioG);
         radioSuma=findViewById(R.id.radioSuma);
@@ -103,32 +105,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        String operando="";
+        String displayaux="";
         if (view instanceof Button) {
+
             Button b = (Button) view;
 
             if (b==botonIgual){
                 display.setText(String.valueOf(resultado));
+                displayaux = display2.getText().toString();
+                display2.setText(displayaux + " = " + resultado);
                 aux=Integer.parseInt(display.getText().toString());
             }else if (b==botonSuma){
-                aux=Integer.parseInt(display.getText().toString());
-                display.setText("0");
-                if (aux!=0)
-                    aux+=aux;
+                operando="+";
+                if (aux==0){
+                    aux = Integer.parseInt(display.getText().toString());
+                    display.setText("0");
+                    display2.setText(aux + " + ");
+                }else {
+                    aux2= Integer.parseInt(display.getText().toString());
+                    resultado = aux + aux2;
+                    display.setText("0");
+                    display2.setText(aux + " + " + aux2);
+                }
+
             }else if (b==botonResta){
                 aux=Integer.parseInt(display.getText().toString());
-                resultado=aux-Integer.parseInt(display.getText().toString());
-                display.setText(resultado);
+                display.setText(aux +"-");
+                if (aux!=0)
+                    aux=aux-aux;
             }else if (b==botonMultipl){
                 aux=Integer.parseInt(display.getText().toString());
-                resultado=aux*Integer.parseInt(display.getText().toString());
-                display.setText(resultado);
+                display.setText(aux +"*");
+                if (aux!=0)
+                    aux=aux*aux;
             }else if (b==botonDividir){
                 aux=Integer.parseInt(display.getText().toString());
-                resultado=aux/Integer.parseInt(display.getText().toString());
-                display.setText(resultado);
+                display.setText(aux +"/");
+                if (aux!=0)
+                    aux=aux/aux;
             }else if (b==botonClear) {
                 display.setText("0");
+                display2.setText("");
                 aux = 0;
+                aux2 = 0;
+                resultado = 0;
+                displayaux="";
             }else {
                 if  (display.getText().equals("0"))
                     display.setText(b.getTag().toString());

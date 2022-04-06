@@ -22,11 +22,26 @@
                 android:layout_height="match_parent" >
 
                 <TextView
+                    android:id="@+id/display2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_span="4"
+                    android:gravity="right"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/button_height"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_span="4"
                     android:gravity="right"
                     android:text="0"
@@ -81,6 +96,7 @@
                     android:layout_height="@dimen/button_height"
                     android:layout_marginLeft="16dp"
                     android:enabled="true"
+                    android:tag="/"
                     android:text="/" />
             </TableRow>
 
@@ -119,6 +135,7 @@
                     android:layout_height="@dimen/button_height"
                     android:layout_marginLeft="16dp"
                     android:enabled="true"
+                    android:tag="*"
                     android:text="*" />
             </TableRow>
 
@@ -157,6 +174,7 @@
                     android:layout_height="@dimen/button_height"
                     android:layout_marginLeft="16dp"
                     android:enabled="true"
+                    android:tag="-"
                     android:text="-" />
             </TableRow>
 
@@ -194,6 +212,7 @@
                     android:layout_height="@dimen/button_height"
                     android:layout_marginLeft="16dp"
                     android:enabled="true"
+                    android:tag="+"
                     android:text="+" />
             </TableRow>
         </TableLayout>
@@ -202,7 +221,7 @@
             android:id="@+id/checkBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="Mostrar opciones de deshabilitar" />
 
