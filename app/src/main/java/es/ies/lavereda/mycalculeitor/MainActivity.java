@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button botonDividir;
     private Button botonIgual;
     private Button botonClear;
+    private Button botonPunto;
     private TextView display;
     private TextView display2;
     private CheckBox checkBox;
@@ -41,6 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int aux;
     private int aux2;
     private int resultado;
+    private boolean esSuma;
+    private boolean esResta;
+    private boolean esMultip;
+    private boolean esDivid;
 
 
 
@@ -65,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         botonMultipl=findViewById(R.id.multiplicButon);
         botonDividir=findViewById(R.id.dividirButon);
         botonClear=findViewById(R.id.clearButton);
+        botonPunto = findViewById(R.id.putno);
         display=findViewById(R.id.textView);
         display2=findViewById(R.id.display2);
         checkBox=findViewById(R.id.checkBox);
@@ -90,73 +97,114 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         botonResta.setOnClickListener(this);
         botonMultipl.setOnClickListener(this);
         botonClear.setOnClickListener(this);
+        botonPunto.setOnClickListener(this);
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b)
+                if (b){
                     radioGroup.setVisibility(View.VISIBLE);
-                else
+                }else{
                     radioGroup.setVisibility(View.GONE);
+                    radioSuma.setChecked(false);
+                    radioResta.setChecked(false);
+                    radioMultipli.setChecked(false);
+                    radioDividir.setChecked(false);
+                    botonSuma.setEnabled(true);
+                    botonResta.setEnabled(true);
+                    botonMultipl.setEnabled(true);
+                    botonDividir.setEnabled(true);
+                }
             }
         });
-
     }
+
+
 
     @Override
     public void onClick(View view) {
-        String operando="";
-        String displayaux="";
         if (view instanceof Button) {
 
             Button b = (Button) view;
 
-            if (b==botonIgual){
-                display.setText(String.valueOf(resultado));
-                displayaux = display2.getText().toString();
-                display2.setText(displayaux + " = " + resultado);
-                aux=Integer.parseInt(display.getText().toString());
-            }else if (b==botonSuma){
-                operando="+";
-                if (aux==0){
-                    aux = Integer.parseInt(display.getText().toString());
-                    display.setText("0");
-                    display2.setText(aux + " + ");
-                }else {
+            if (b == botonIgual){
+                if (esSuma){
                     aux2= Integer.parseInt(display.getText().toString());
                     resultado = aux + aux2;
-                    display.setText("0");
-                    display2.setText(aux + " + " + aux2);
+                    display2.setText(aux + " + " +aux2 +" = " + resultado );
+                    display.setText(String.valueOf(resultado));
+                    aux = 0;
+                }else if (esResta){
+                    aux2= Integer.parseInt(display.getText().toString());
+                    resultado = aux - aux2;
+                    display2.setText(aux + " - " +aux2 +" = " + resultado );
+                    display.setText(String.valueOf(resultado));
+                    aux = 0;
+                }else if (esMultip){
+                    aux2= Integer.parseInt(display.getText().toString());
+                    resultado = aux * aux2;
+                    display2.setText(aux + " * " +aux2 +" = " + resultado );
+                    display.setText(String.valueOf(resultado));
+                    aux = 0;
+                }else if (esDivid){
+                    aux2= Integer.parseInt(display.getText().toString());
+                    resultado = aux / aux2;
+                    display2.setText(aux + " / " +aux2 +" = " + resultado );
+                    display.setText(String.valueOf(resultado));
+                    aux = 0;
                 }
+                esSuma=false;
+                esResta=false;
+                esMultip=false;
+                esDivid=false;
+            }else if (b == botonSuma){
+                aux = Integer.parseInt(display.getText().toString());
+                display.setText("0");
+                display2.setText(String.valueOf(aux));
 
-            }else if (b==botonResta){
-                aux=Integer.parseInt(display.getText().toString());
-                display.setText(aux +"-");
-                if (aux!=0)
-                    aux=aux-aux;
-            }else if (b==botonMultipl){
-                aux=Integer.parseInt(display.getText().toString());
-                display.setText(aux +"*");
-                if (aux!=0)
-                    aux=aux*aux;
-            }else if (b==botonDividir){
-                aux=Integer.parseInt(display.getText().toString());
-                display.setText(aux +"/");
-                if (aux!=0)
-                    aux=aux/aux;
+                esSuma=true;
+                esResta=false;
+                esMultip=false;
+                esDivid=false;
+            }else if (b == botonResta){
+                aux = Integer.parseInt(display.getText().toString());
+                display.setText("0");
+
+                esSuma=false;
+                esResta=true;
+                esMultip=false;
+                esDivid=false;
+            }else if (b == botonMultipl){
+                aux = Integer.parseInt(display.getText().toString());
+                display.setText("0");
+
+                esSuma=false;
+                esResta=false;
+                esMultip=true;
+                esDivid=false;
+            }else if (b == botonDividir){
+                aux = Integer.parseInt(display.getText().toString());
+                display.setText("0");
+
+                esSuma=false;
+                esResta=false;
+                esMultip=false;
+                esDivid=true;
             }else if (b==botonClear) {
                 display.setText("0");
                 display2.setText("");
                 aux = 0;
                 aux2 = 0;
                 resultado = 0;
-                displayaux="";
-            }else {
-                if  (display.getText().equals("0"))
-                    display.setText(b.getTag().toString());
-                else
-                    display.setText(display.getText()+b.getTag().toString());
+            }else if(b == botonPunto){
+                Toast.makeText(this, "Has hecho click en el punto", Toast.LENGTH_SHORT).show();
 
+            }else {
+                if (display.getText().equals("0")) {
+                    display.setText(b.getTag().toString());
+                } else {
+                    display.setText(display.getText() + b.getTag().toString());
+                }
             }
         }
 
@@ -167,20 +215,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 botonResta.setEnabled(true);
                 botonMultipl.setEnabled(true);
                 botonDividir.setEnabled(true);
-            }
-            if (rd == radioResta) {
+            }else if (rd == radioResta) {
                 botonSuma.setEnabled(true);
                 botonResta.setEnabled(false);
                 botonMultipl.setEnabled(true);
                 botonDividir.setEnabled(true);
-            }
-            if (rd == radioMultipli) {
+            }else if (rd == radioMultipli) {
                 botonSuma.setEnabled(true);
                 botonResta.setEnabled(true);
                 botonMultipl.setEnabled(false);
                 botonDividir.setEnabled(true);
-            }
-            if (rd == radioDividir) {
+            }else if (rd == radioDividir) {
                 botonSuma.setEnabled(true);
                 botonResta.setEnabled(true);
                 botonMultipl.setEnabled(true);
