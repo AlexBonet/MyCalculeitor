@@ -97,7 +97,7 @@
                     android:layout_width="@dimen/button_width"
                     android:layout_height="@dimen/button_height"
                     android:layout_marginLeft="16dp"
-                    android:text="/" />
+                    android:text="÷" />
             </TableRow>
 
             <TableRow
@@ -134,7 +134,7 @@
                     android:layout_width="@dimen/button_width"
                     android:layout_height="@dimen/button_height"
                     android:layout_marginLeft="16dp"
-                    android:text="*" />
+                    android:text="×" />
             </TableRow>
 
             <TableRow
@@ -216,7 +216,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:text="Mostrar opciones de deshabilitar" />
 
         <RadioGroup
@@ -230,28 +229,28 @@
                 android:id="@+id/radioSuma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
+                android:layout_marginLeft="10dp"
                 android:text="Suma" />
 
             <RadioButton
                 android:id="@+id/radioResta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
+                android:layout_marginLeft="10dp"
                 android:text="Resta" />
 
             <RadioButton
                 android:id="@+id/radioMultipl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
+                android:layout_marginLeft="10dp"
                 android:text="Multiplicación" />
 
             <RadioButton
                 android:id="@+id/radioDivi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
+                android:layout_marginLeft="10dp"
                 android:text="División" />
 
         </RadioGroup>
