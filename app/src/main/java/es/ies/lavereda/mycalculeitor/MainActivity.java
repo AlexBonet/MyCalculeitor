@@ -2,6 +2,7 @@ package es.ies.lavereda.mycalculeitor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -146,8 +147,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onClick(View view) {
+        String str="";
         if (view instanceof Button) {
 
             Button b = (Button) view;
@@ -156,25 +159,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (esSuma) {
                     aux2 = Integer.parseInt(display.getText().toString());
                     resultado = aux + aux2;
-                    display2.setText(aux + " + " + aux2 + " = " + resultado);
+                    str+=aux + " + " + aux2 + " = " + resultado;
+                    display2.setText(str);
                     display.setText(String.valueOf(resultado));
                     aux = 0;
                 } else if (esResta) {
                     aux2 = Integer.parseInt(display.getText().toString());
                     resultado = aux - aux2;
-                    display2.setText(aux + " - " + aux2 + " = " + resultado);
+                    str+=aux + " - " + aux2 + " = " + resultado;
+                    display2.setText(str);
                     display.setText(String.valueOf(resultado));
                     aux = 0;
                 } else if (esMultip) {
                     aux2 = Integer.parseInt(display.getText().toString());
                     resultado = aux * aux2;
-                    display2.setText(aux + " × " + aux2 + " = " + resultado);
+                    str+=aux + " × " + aux2 + " = " + resultado;
+                    display2.setText(str);
                     display.setText(String.valueOf(resultado));
                     aux = 0;
                 } else if (esDivid) {
                     aux2 = Integer.parseInt(display.getText().toString());
                     resultado = aux / aux2;
-                    display2.setText(aux + " ÷ " + aux2 + " = " + resultado);
+                    str+=aux + " ÷ " + aux2 + " = " + resultado;
+                    display2.setText(str);
                     display.setText(String.valueOf(resultado));
                     aux = 0;
                 }
@@ -183,33 +190,72 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 esMultip = false;
                 esDivid = false;
             } else if (b == botonSuma) {
-                aux = Integer.parseInt(display.getText().toString());
-                display.setText("0");
-                display2.setText(String.valueOf(aux));
+                if (aux != 0){
+                    aux2 = Integer.parseInt(display.getText().toString());
+                    resultado = aux + aux2;
+                    display2.setText(aux + " + " + aux2 + " = " + resultado);
+                    display.setText("0");
+                    aux = resultado;
+                    aux2 = 0;
+                }else {
+                    aux = Integer.parseInt(display.getText().toString());
+                    display.setText("0");
+                    display2.setText(String.valueOf(aux));
+                }
 
                 esSuma = true;
                 esResta = false;
                 esMultip = false;
                 esDivid = false;
             } else if (b == botonResta) {
-                aux = Integer.parseInt(display.getText().toString());
-                display.setText("0");
+                if (aux != 0){
+                    aux2 = Integer.parseInt(display.getText().toString());
+                    resultado = aux - aux2;
+                    display2.setText(aux + " - " + aux2 + " = " + resultado);
+                    display.setText("0");
+                    aux = resultado;
+                    aux2 = 0;
+                }else {
+                    aux = Integer.parseInt(display.getText().toString());
+                    display.setText("0");
+                    display2.setText(String.valueOf(aux));
+                }
 
                 esSuma = false;
                 esResta = true;
                 esMultip = false;
                 esDivid = false;
             } else if (b == botonMultipl) {
-                aux = Integer.parseInt(display.getText().toString());
-                display.setText("0");
+                if (aux != 0){
+                    aux2 = Integer.parseInt(display.getText().toString());
+                    resultado = aux * aux2;
+                    display2.setText(aux + " × " + aux2 + " = " + resultado);
+                    display.setText("0");
+                    aux = resultado;
+                    aux2 = 0;
+                }else {
+                    aux = Integer.parseInt(display.getText().toString());
+                    display.setText("0");
+                    display2.setText(String.valueOf(aux));
+                }
 
                 esSuma = false;
                 esResta = false;
                 esMultip = true;
                 esDivid = false;
             } else if (b == botonDividir) {
-                aux = Integer.parseInt(display.getText().toString());
-                display.setText("0");
+                if (aux != 0){
+                    aux2 = Integer.parseInt(display.getText().toString());
+                    resultado = aux / aux2;
+                    display2.setText(aux + " ÷ " + aux2 + " = " + resultado);
+                    display.setText("0");
+                    aux = resultado;
+                    aux2 = 0;
+                }else {
+                    aux = Integer.parseInt(display.getText().toString());
+                    display.setText("0");
+                    display2.setText(String.valueOf(aux));
+                }
 
                 esSuma = false;
                 esResta = false;
@@ -218,6 +264,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else if (b == botonClear) {
                 display.setText("0");
                 display2.setText("");
+                str = "";
                 aux = 0;
                 aux2 = 0;
                 resultado = 0;
