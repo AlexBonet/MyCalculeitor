@@ -230,6 +230,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:onClick="onRadioClick"
                 android:text="Suma" />
 
             <RadioButton
@@ -237,6 +238,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:onClick="onRadioClick"
                 android:text="Resta" />
 
             <RadioButton
@@ -244,6 +246,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:onClick="onRadioClick"
                 android:text="Multiplicación" />
 
             <RadioButton
@@ -251,6 +254,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:onClick="onRadioClick"
                 android:text="División" />
 
         </RadioGroup>

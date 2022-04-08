@@ -118,6 +118,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    public void onRadioClick(View view) {
+        if (view instanceof RadioButton) {
+            RadioButton rd = (RadioButton) view;
+            if (rd == radioSuma) {
+                botonSuma.setEnabled(false);
+                botonResta.setEnabled(true);
+                botonMultipl.setEnabled(true);
+                botonDividir.setEnabled(true);
+            } else if (rd == radioResta) {
+                botonSuma.setEnabled(true);
+                botonResta.setEnabled(false);
+                botonMultipl.setEnabled(true);
+                botonDividir.setEnabled(true);
+            } else if (rd == radioMultipli) {
+                botonSuma.setEnabled(true);
+                botonResta.setEnabled(true);
+                botonMultipl.setEnabled(false);
+                botonDividir.setEnabled(true);
+            } else if (rd == radioDividir) {
+                botonSuma.setEnabled(true);
+                botonResta.setEnabled(true);
+                botonMultipl.setEnabled(true);
+                botonDividir.setEnabled(false);
+            }
+        }
+    }
+
+
     @Override
     public void onClick(View view) {
         if (view instanceof Button) {
@@ -204,23 +232,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
-        if (view instanceof RadioButton) {
-            RadioButton rd = (RadioButton) view;
-            if (rd == radioSuma) {
-                botonSuma.setEnabled(false);
-            } else if (rd == radioSuma) {
-                botonResta.setEnabled(false);
-            } else if (rd == radioSuma) {
-                botonMultipl.setEnabled(false);
-            } else if (rd == radioSuma) {
-                botonDividir.setEnabled(false);
-            }else{
-//                botonSuma.setEnabled(true);
-//                botonResta.setEnabled(true);
-//                botonMultipl.setEnabled(true);
-//                botonDividir.setEnabled(true);
-            }
-        }
+//        if (view instanceof RadioButton) {
+//            RadioButton rd = (RadioButton) view;
+//            if (rd == radioSuma) {
+//                botonSuma.setEnabled(false);
+//            } else if (rd == radioSuma) {
+//                botonResta.setEnabled(false);
+//            } else if (rd == radioSuma) {
+//                botonMultipl.setEnabled(false);
+//            } else if (rd == radioSuma) {
+//                botonDividir.setEnabled(false);
+//            }else{
+////                botonSuma.setEnabled(true);
+////                botonResta.setEnabled(true);
+////                botonMultipl.setEnabled(true);
+////                botonDividir.setEnabled(true);
+//            }
+//        }
 
     }
 }
