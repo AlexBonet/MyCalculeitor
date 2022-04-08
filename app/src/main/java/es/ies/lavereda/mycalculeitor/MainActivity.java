@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("SetTextI18n")
     @Override
     public void onClick(View view) {
-        String str="";
+        String str = "";
         if (view instanceof Button) {
 
             Button b = (Button) view;
@@ -159,28 +159,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (esSuma) {
                     aux2 = Integer.parseInt(display.getText().toString());
                     resultado = aux + aux2;
-                    str+=aux + " + " + aux2 + " = " + resultado;
+                    str += aux + " + " + aux2 + " = " + resultado;
                     display2.setText(str);
                     display.setText(String.valueOf(resultado));
                     aux = 0;
                 } else if (esResta) {
                     aux2 = Integer.parseInt(display.getText().toString());
                     resultado = aux - aux2;
-                    str+=aux + " - " + aux2 + " = " + resultado;
+                    str += aux + " - " + aux2 + " = " + resultado;
                     display2.setText(str);
                     display.setText(String.valueOf(resultado));
                     aux = 0;
                 } else if (esMultip) {
                     aux2 = Integer.parseInt(display.getText().toString());
                     resultado = aux * aux2;
-                    str+=aux + " × " + aux2 + " = " + resultado;
+                    str += aux + " × " + aux2 + " = " + resultado;
                     display2.setText(str);
                     display.setText(String.valueOf(resultado));
                     aux = 0;
                 } else if (esDivid) {
                     aux2 = Integer.parseInt(display.getText().toString());
                     resultado = aux / aux2;
-                    str+=aux + " ÷ " + aux2 + " = " + resultado;
+                    str += aux + " ÷ " + aux2 + " = " + resultado;
                     display2.setText(str);
                     display.setText(String.valueOf(resultado));
                     aux = 0;
@@ -190,14 +190,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 esMultip = false;
                 esDivid = false;
             } else if (b == botonSuma) {
-                if (aux != 0){
+                if (aux != 0) {
                     aux2 = Integer.parseInt(display.getText().toString());
                     resultado = aux + aux2;
                     display2.setText(aux + " + " + aux2 + " = " + resultado);
                     display.setText("0");
                     aux = resultado;
                     aux2 = 0;
-                }else {
+                } else {
                     aux = Integer.parseInt(display.getText().toString());
                     display.setText("0");
                     display2.setText(String.valueOf(aux));
@@ -208,14 +208,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 esMultip = false;
                 esDivid = false;
             } else if (b == botonResta) {
-                if (aux != 0){
+                if (aux != 0) {
                     aux2 = Integer.parseInt(display.getText().toString());
                     resultado = aux - aux2;
                     display2.setText(aux + " - " + aux2 + " = " + resultado);
                     display.setText("0");
                     aux = resultado;
                     aux2 = 0;
-                }else {
+                } else {
                     aux = Integer.parseInt(display.getText().toString());
                     display.setText("0");
                     display2.setText(String.valueOf(aux));
@@ -226,14 +226,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 esMultip = false;
                 esDivid = false;
             } else if (b == botonMultipl) {
-                if (aux != 0){
+                if (aux != 0) {
                     aux2 = Integer.parseInt(display.getText().toString());
                     resultado = aux * aux2;
                     display2.setText(aux + " × " + aux2 + " = " + resultado);
                     display.setText("0");
                     aux = resultado;
                     aux2 = 0;
-                }else {
+                } else {
                     aux = Integer.parseInt(display.getText().toString());
                     display.setText("0");
                     display2.setText(String.valueOf(aux));
@@ -244,14 +244,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 esMultip = true;
                 esDivid = false;
             } else if (b == botonDividir) {
-                if (aux != 0){
+                if (aux != 0) {
                     aux2 = Integer.parseInt(display.getText().toString());
                     resultado = aux / aux2;
                     display2.setText(aux + " ÷ " + aux2 + " = " + resultado);
                     display.setText("0");
                     aux = resultado;
                     aux2 = 0;
-                }else {
+                } else {
                     aux = Integer.parseInt(display.getText().toString());
                     display.setText("0");
                     display2.setText(String.valueOf(aux));
@@ -279,23 +279,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
-//        if (view instanceof RadioButton) {
-//            RadioButton rd = (RadioButton) view;
-//            if (rd == radioSuma) {
-//                botonSuma.setEnabled(false);
-//            } else if (rd == radioSuma) {
-//                botonResta.setEnabled(false);
-//            } else if (rd == radioSuma) {
-//                botonMultipl.setEnabled(false);
-//            } else if (rd == radioSuma) {
-//                botonDividir.setEnabled(false);
-//            }else{
-////                botonSuma.setEnabled(true);
-////                botonResta.setEnabled(true);
-////                botonMultipl.setEnabled(true);
-////                botonDividir.setEnabled(true);
-//            }
-//        }
-
     }
 }
